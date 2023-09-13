@@ -18,6 +18,11 @@ export const typeDefs = `#graphql
     verified: Boolean!
     reviews: [Review!]
   }
+  type Order {
+    order_id: Int!,
+    customer_id: Int!
+    order_date: String!
+  }
   type Query {
     games: [Game]
     game(id: ID!): Game
@@ -25,6 +30,7 @@ export const typeDefs = `#graphql
     review(id: ID!): Review
     authors: [Author]
     author(id: ID!): Author
+    order: [Order]
   }
   type Mutation {
     addGame(game: AddGameInput!): Game

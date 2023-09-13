@@ -1,9 +1,10 @@
 import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
+import sqlite from 'better-sqlite3';
 
 // data
 import db from './_db.js'
-
+const real_db = new sqlite("./db.sqlite");
 // types
 import { typeDefs } from './schema.js'
 
@@ -27,6 +28,9 @@ const resolvers = {
     },
     review(_, args) {
       return db.reviews.find((review) => review.id === args.id)
+    },
+    async order() {
+      return await real_db.prepare(`SELECT * FROM orders;`).all();
     }
   },
   Game: {

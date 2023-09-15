@@ -79,3 +79,6 @@ cp db.sqlite prisma/dev.db
 
 npx prisma db pull
 ```
+
+* [Quickstart with TypeScript & SQLite](https://www.prisma.io/docs/getting-started/quickstart)
+* [Introspection | typescript-postgresql](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/introspection-typescript-postgresql)

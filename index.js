@@ -11,6 +11,15 @@ import { typeDefs } from './schema.js'
 // resolvers
 const resolvers = {
   Query: {
+    async customer() {
+      return await real_db.prepare(`SELECT * FROM customers;`).all();
+    },
+    async order() {
+      return await real_db.prepare(`SELECT * FROM orders;`).all();
+    },
+    async product() {
+      return await real_db.prepare(`SELECT * FROM products;`).all();
+    },
     games() {
       return db.games
     },
@@ -28,15 +37,6 @@ const resolvers = {
     },
     review(_, args) {
       return db.reviews.find((review) => review.id === args.id)
-    },
-    async customer() {
-      return await real_db.prepare(`SELECT * FROM customers;`).all();
-    },
-    async order() {
-      return await real_db.prepare(`SELECT * FROM orders;`).all();
-    },
-    async product() {
-      return await real_db.prepare(`SELECT * FROM products;`).all();
     }
   },
   Game: {
@@ -82,6 +82,11 @@ const resolvers = {
       })
 
       return db.games.find((g) => g.id === args.id)
+    }
+  },
+  Customer : {
+    async orders(parent) {
+      return await real_db.prepare(`SELECT * FROM orders where customer_id = '${parent.customer_id}';`).all();
     }
   }
 }

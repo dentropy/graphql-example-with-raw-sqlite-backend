@@ -3,17 +3,21 @@ export const typeDefs = `#graphql
     customer_id: Int!,
     first_name: String!
     last_name: String!
-    email: String!
+    email: String!,
+    orders: [Order!]
   }
   type Product {
     product_id: Int!,
     product_name: String!
-    price: Int!
+    price: Int!,
+    # orders: [Order!]
   }
   type Order {
     order_id: Int!,
     customer_id: Int!
     order_date: String!
+    # customers: [Customer!]
+    # product: [Product!]
   }
 
 

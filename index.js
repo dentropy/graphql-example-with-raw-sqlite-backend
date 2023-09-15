@@ -88,6 +88,19 @@ const resolvers = {
     async orders(parent) {
       return await real_db.prepare(`SELECT * FROM orders where customer_id = '${parent.customer_id}';`).all();
     }
+  },
+  Order : {
+    async customers(parent) {
+      return await real_db.prepare(`SELECT * FROM customer where customer_id = '${parent.customer_id}';`).all();
+    },
+    async products(parent) {
+      return await real_db.prepare(`SELECT * FROM products where product_id = '${parent.product_id}';`).all();
+    }
+  },
+  Product : {
+    async orders(parent) {
+      return await real_db.prepare(`SELECT * FROM orders where order_id = '${parent.order_id}';`).all();
+    }
   }
 }
 

@@ -6,18 +6,18 @@ export const typeDefs = `#graphql
     email: String!,
     orders: [Order!]
   }
-  type Product {
-    product_id: Int!,
-    product_name: String!
-    price: Int!,
-    # orders: [Order!]
-  }
   type Order {
     order_id: Int!,
     customer_id: Int!
     order_date: String!
-    # customers: [Customer!]
-    # product: [Product!]
+    customers: [Customer!]
+    products: [Product!]
+  }
+  type Product {
+    product_id: Int!,
+    product_name: String!
+    price: Float!,
+    orders: [Order!]
   }
 
 

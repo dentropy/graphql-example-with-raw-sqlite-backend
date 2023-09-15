@@ -51,3 +51,18 @@ query Product {
   }
 }
 ```
+
+``` graphql
+query Query {
+  product {
+    price
+    product_id
+    product_name
+    orders {
+      customer_id
+      order_date
+      order_id
+    }
+  }
+}
+```

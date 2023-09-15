@@ -4,7 +4,7 @@ import sqlite from 'better-sqlite3';
 
 // data
 import db from './_db.js'
-const real_db = new sqlite("./db.sqlite");
+const real_db = new sqlite("./dev.db");
 // types
 import { typeDefs } from './schema.js'
 

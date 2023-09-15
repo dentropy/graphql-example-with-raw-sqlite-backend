@@ -10,7 +10,15 @@ async function main() {
   })
   console.log(users)
 
-  // Order By
+  const revenue = await prisma.orders.findMany({
+    select: {
+      order_id: true,
+      customer_id: true,
+      order_date: true
+
+    },
+  })
+  console.log(revenue)
 }
 
 main()

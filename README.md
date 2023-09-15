@@ -74,10 +74,10 @@ npm install typescript ts-node @types/node --save-dev
 npx tsc --init
 npm install prisma --save-dev
 npm install @prisma/client
+
+
 npx prisma init --datasource-provider sqlite
-
 cp db.sqlite prisma/dev.db
-
 npx prisma db pull
 ```
 

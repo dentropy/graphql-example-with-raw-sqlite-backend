@@ -1,4 +1,22 @@
 export const typeDefs = `#graphql
+  type Customer {
+    customer_id: Int!,
+    first_name: String!
+    last_name: String!
+    email: String!
+  }
+  type Product {
+    product_id: Int!,
+    product_name: String!
+    price: Int!
+  }
+  type Order {
+    order_id: Int!,
+    customer_id: Int!
+    order_date: String!
+  }
+
+
   type Game {
     id: ID!
     title: String!
@@ -18,19 +36,18 @@ export const typeDefs = `#graphql
     verified: Boolean!
     reviews: [Review!]
   }
-  type Order {
-    order_id: Int!,
-    customer_id: Int!
-    order_date: String!
-  }
   type Query {
+    customer: [Customer]
+    order: [Order]
+    product: [Product]
+
+
     games: [Game]
     game(id: ID!): Game
     reviews: [Review]
     review(id: ID!): Review
     authors: [Author]
     author(id: ID!): Author
-    order: [Order]
   }
   type Mutation {
     addGame(game: AddGameInput!): Game

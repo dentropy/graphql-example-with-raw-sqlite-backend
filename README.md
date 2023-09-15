@@ -19,3 +19,35 @@ node dbInit.js
 node index.js
 ```
 
+## Queries
+
+``` graphql
+query Query {
+  customer {
+    customer_id
+    email
+    first_name
+    last_name
+  }
+}
+```
+
+``` graphql
+query Order {
+  order {
+    customer_id
+    order_date
+    order_id
+  }
+}
+```
+
+``` graphql
+query Product {
+  product {
+    price
+    product_id
+    product_name
+  }
+}
+```

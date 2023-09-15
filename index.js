@@ -11,8 +11,27 @@ import { typeDefs } from './schema.js'
 // resolvers
 const resolvers = {
   Query: {
-    async customer() {
-      return await real_db.prepare(`SELECT * FROM customers;`).all();
+    // async customer() {
+    //   return await real_db.prepare(`SELECT * FROM customers;`).all();
+    // },
+    async customer(_, { orderBy }) {
+      console.log(orderBy)
+      if (orderBy) {
+        // let sortedBooks = [...booksData];
+        // const { field, direction } = orderBy;
+        // sortedBooks.sort((a, b) => {
+        //   if (direction === OrderByDirection.ASC) {
+        //     return a[field] > b[field] ? 1 : -1;
+        //   } else {
+        //     return a[field] < b[field] ? 1 : -1;
+        //   }
+        // });
+        return await real_db.prepare(`SELECT * FROM customers ORDER BY ${orderBy.field} ${orderBy.direction};`).all();
+
+      } else {
+        return await real_db.prepare(`SELECT * FROM customers;`).all();
+      }
+      return await real_db.prepare(`SELECT * FROM customers ORDER BY ${field} ${OrderByDirection.ASC};`).all();
     },
     async order() {
       return await real_db.prepare(`SELECT * FROM orders;`).all();

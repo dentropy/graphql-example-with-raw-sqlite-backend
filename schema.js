@@ -20,6 +20,20 @@ export const typeDefs = `#graphql
     orders: [Order!]
   }
 
+  enum OrderByCustomerField {
+    FIRST_NAME
+    LAST_NAME
+    EMAIL
+  }
+  enum OrderByDirection {
+    ASC
+    DESC
+  }
+  input OrderByCustomerInput {
+    field: OrderByCustomerField!
+    direction: OrderByDirection!
+  }
+
 
   type Game {
     id: ID!
@@ -41,10 +55,9 @@ export const typeDefs = `#graphql
     reviews: [Review!]
   }
   type Query {
-    customer: [Customer]
+    customer(orderBy: OrderByCustomerInput): [Customer!]!
     order: [Order]
     product: [Product]
-
 
     games: [Game]
     game(id: ID!): Game
